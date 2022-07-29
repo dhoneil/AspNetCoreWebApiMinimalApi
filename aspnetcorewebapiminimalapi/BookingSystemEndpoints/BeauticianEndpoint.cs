@@ -17,14 +17,8 @@ namespace aspnetcorewebapiminimalapi.Endpoints
             {
                 var sql = "select * from beauticians";
                 var res = await _dataAccess.LoadData<Beautician, dynamic>(sql, new { }, GlobalVariables.GlobalVariables.MYSQLCONNECTIONSTRING);
+                return res;
             }).RequireCors("_myAllowSpecificOrigins");
-
-            app.MapPost("/beauticians", async([FromBody] Item item, [FromServices] accounting_systemContext db, HttpResponse response) =>
-            {
-                db.Items.Add(item);
-                await db.SaveChangesAsync();
-                response.StatusCode = 201;
-            });
         }
     }
 }

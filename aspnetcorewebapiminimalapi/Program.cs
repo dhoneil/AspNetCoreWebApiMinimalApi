@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://example.com",
                             "http://www.contoso.com",
                             "https://localhost:7280",
-                            "https://localhost:7134");
+                            "https://localhost:7134").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
